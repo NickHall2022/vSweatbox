@@ -251,7 +251,6 @@ export type PhraseologyMistakeType =
   | 'taxiToRunway'
   | 'pushbackKeyword'
   | 'vfrForgotReadback'
-  | 'sidTransition'
   | 'clearanceLimitAirport'
   | 'craftOrder';
 
