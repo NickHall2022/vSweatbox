@@ -250,34 +250,6 @@ export function MistakeProvider({ children }: { children: ReactNode }) {
 
   function reviewPhrasesForIFRClearance(phrases: string[], request: AircraftRequest) {
     if (request.requestType === 'clearanceIFR') {
-      const aircraft = aircrafts.find((aircraft) => aircraft.callsign === request.callsign);
-      if (aircraft) {
-        if (aircraft.flightPlan.route.startsWith('HSKEL')) {
-          if (!phrases.find((phrase) => phrase.includes('transition'))) {
-            addPhraseologyMistake(
-              'sidTransition',
-              phrases.join(', '),
-              `${request.callsign} (HSKEL#)`
-            );
-          }
-        } else if (aircraft.flightPlan.route.startsWith('NUBLE')) {
-          if (!phrases.find((phrase) => phrase.includes('transition'))) {
-            addPhraseologyMistake(
-              'sidTransition',
-              phrases.join(', '),
-              `${request.callsign} (NUBLE#)`
-            );
-          }
-        } else {
-          if (phrases.find((phrase) => phrase.includes('transition'))) {
-            addPhraseologyMistake(
-              'sidTransition',
-              phrases.join(', '),
-              `${request.callsign} (PWM#)`
-            );
-          }
-        }
-      }
       if (!phrases.find((phrase) => phrase.includes('airport'))) {
         addPhraseologyMistake('clearanceLimitAirport', phrases.join(', '), request.callsign);
       }
