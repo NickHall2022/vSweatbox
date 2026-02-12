@@ -103,7 +103,7 @@ export function SpeechInterpretatonProvider({ children }: { children: ReactNode 
                 alternative.aircraftResponse,
                 callsign,
                 'radio',
-                `${phoneticizeString(callsign)} ${alternative.aircraftResponse}`
+                `${phoneticizeString(callsign)} ${alternative.aircraftResponsePhonetic || alternative.aircraftResponse}`
               );
             }
             return;

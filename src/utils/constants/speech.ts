@@ -27,7 +27,10 @@ export const REQUEST_KEYWORDS: Record<RequestType, Keywords> = {
     ],
   },
   readbackIFR: {
-    keywords: [{ phrase: 'readback', missingPhraseResponse: 'was our readback correct?' }],
+    keywords: [
+      { phrase: 'readback', missingPhraseResponse: 'was our readback correct?' },
+      { phrase: 'correct', missingPhraseResponse: 'was our readback correct?' },
+    ],
   },
   clearanceVFR: {
     keywords: [
@@ -93,8 +96,20 @@ export const REQUEST_KEYWORDS: Record<RequestType, Keywords> = {
   },
   handoff: {
     keywords: [
-      { phrase: 'contact tower' },
+      { phrase: 'contact' },
+      { phrase: 'tower' },
       { phrase: '120', missingPhraseResponse: 'tower frequency' },
+    ],
+    alternatives: [
+      {
+        keywords: [
+          { phrase: 'monitor' },
+          { phrase: 'tower' },
+          { phrase: '120', missingPhraseResponse: 'tower frequency' },
+        ],
+        aircraftResponse: 'Monitor tower 120.9',
+        aircraftResponsePhonetic: 'Monitor tower one two zero point niner',
+      },
     ],
   },
 };

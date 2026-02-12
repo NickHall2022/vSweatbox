@@ -85,7 +85,6 @@ export function SpeechProvider({ children }: { children: ReactNode }) {
   }
 
   function sanitizeTranscript(transcript: string) {
-    console.log(transcript);
     transcript = transcript
       .toLowerCase()
       .replaceAll(',', '')
@@ -94,6 +93,7 @@ export function SpeechProvider({ children }: { children: ReactNode }) {
       .replaceAll('?', '')
       .replaceAll(':', '')
       .replaceAll('-', '')
+      .replaceAll('$', '')
       .replaceAll('9 or', '9')
       .replaceAll('9 er', '9')
       .replaceAll('9 uh', '9')
@@ -264,10 +264,11 @@ export function SpeechProvider({ children }: { children: ReactNode }) {
       .replaceAll('2 9', '29')
       .replaceAll('room 29', 'runway 29')
       .replaceAll("'s", ' is')
+      .replaceAll(':00', '')
       .trim();
 
-    if (transcript.startsWith('KR')) {
-      transcript = transcript.replace('KR', 'care');
+    if (transcript.startsWith('kr')) {
+      transcript = transcript.replace('kr', 'care ');
     }
     if (transcript.startsWith('number ')) {
       transcript = transcript.replace('number ', 'N');
@@ -334,6 +335,10 @@ export function SpeechProvider({ children }: { children: ReactNode }) {
       let i = 1;
 
       while (i < splitTranscript.length && numLettersFound < CALLSIGN_LENGTH) {
+        if (splitTranscript[i] === 'to') {
+          splitTranscript[i] = '2';
+        }
+
         if (splitTranscript[i].length + numLettersFound > CALLSIGN_LENGTH) {
           break;
         }

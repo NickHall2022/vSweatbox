@@ -610,8 +610,12 @@ export function phoneticizeString(text: string): string {
 
   const airlineCode = text.substring(0, 3);
   if (AIRLINE_CODES[airlineCode]) {
-    const newText = text.replace(airlineCode, AIRLINE_CODES[airlineCode]);
-    return newText;
+    const flightNumber = text.substring(3);
+    const splitNumber = [
+      flightNumber.substring(0, flightNumber.length - 2),
+      flightNumber.substring(flightNumber.length - 2),
+    ];
+    return `${AIRLINE_CODES[airlineCode]} ${splitNumber[0]} ${splitNumber[1]}`;
   }
 
   return text

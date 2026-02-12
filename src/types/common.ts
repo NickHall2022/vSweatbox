@@ -289,5 +289,6 @@ export type Keywords = {
   atLeastOneOf?: string[];
   alternatives?: Keywords[];
   aircraftResponse?: string;
+  aircraftResponsePhonetic?: string;
   requiredStatus?: FlightStatus;
 };

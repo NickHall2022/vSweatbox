@@ -55,6 +55,7 @@ export const DEST_TO_NAME_MAP: Record<string, string> = {
   KCLT: 'Charlotte',
   KCVG: 'Cincinatti',
   KDCA: 'Washington Reagan',
+  KDFW: 'Dallas Fort Worth',
   KDTW: 'Detroit',
   KEWR: 'Newark',
   KHPN: 'Westchester County',
