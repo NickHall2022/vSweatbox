@@ -137,7 +137,11 @@ export function StripPrinter({
           <button
             className="stripPrinterInput"
             disabled={!selectedFlightPlan}
-            style={{ backgroundColor: 'rgb(0, 188, 140)' }}
+            style={{
+              backgroundColor: 'rgb(0, 188, 140)',
+              color: '#fff',
+              opacity: selectedFlightPlan ? 1 : 0.5,
+            }}
             onClick={handleRequestStrip}
           >
             Request Strip

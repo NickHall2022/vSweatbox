@@ -86,6 +86,7 @@ export function PrintedStrip({ stripData }: Props) {
 function splitIntoThreeParts(stripData: StripData) {
   let maxLength = 26;
   const words = stripData.route.split(' ');
+  words.push(stripData.destination);
   const lines = ['', '', ''];
   const remarksPresent = stripData.remarks.length > 0;
   const maxRouteLines = remarksPresent ? 2 : 3;

@@ -188,6 +188,7 @@ export function SpeechProvider({ children }: { children: ReactNode }) {
       .replaceAll(' guac', ' squawk')
       .replaceAll(' coffee', ' copy')
       .replaceAll(' on my', ' runway')
+      .replaceAll('roommate', 'runway')
       .replaceAll('run by', 'runway')
       .replaceAll(' only ', ' runway ')
       .replaceAll('roaming', 'runway')

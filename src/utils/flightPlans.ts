@@ -476,30 +476,20 @@ function getRandomIFRAltitude(prefRoute: PrefRoute) {
     if (random >= 0.33 && random < 0.66) {
       return getRandomArrayElement(SPAWNABLE_HIGH_WEST_ALT);
     }
-    if (Math.random() < 0.5) {
-      const alt = `${getRandomArrayElement(SPAWNABLE_TEC_WEST_ALT)}00`;
-      if (alt.charAt(0) === '0') {
-        return alt.substring(1);
-      }
-      return alt;
+    const alt = `${getRandomArrayElement(SPAWNABLE_TEC_WEST_ALT)}00`;
+    if (alt.charAt(0) === '0') {
+      return alt.substring(1);
     }
-    return `VFR/${getRandomArrayElement(SPAWNABLE_TEC_WEST_ALT)}`;
+    return alt;
   }
 
-  if (Math.random() < 0.75) {
+  if (Math.random() < 0.7) {
     return getRandomArrayElement(SPAWNABLE_HIGH_WEST_ALT);
   }
-  const random = Math.random();
-  if (random < 0.33) {
+  if (Math.random() < 0.5) {
     return getRandomArrayElement(SPAWNABLE_HIGH_EAST_ALT);
   }
-  if (random >= 0.33 && random < 0.66) {
-    return `FL${getRandomArrayElement(SPAWNABLE_HIGH_WEST_ALT)}`;
-  }
-  if (Math.random() < 0.5) {
-    return `${getRandomArrayElement(SPAWNABLE_HIGH_WEST_ALT)}00`;
-  }
-  return `VFR/${getRandomArrayElement(SPAWNABLE_HIGH_WEST_ALT)}`;
+  return `${getRandomArrayElement(SPAWNABLE_HIGH_WEST_ALT)}00`;
 }
 
 function getRandomVFRAltitude(direction: string) {

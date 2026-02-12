@@ -236,10 +236,7 @@ export function SimulationProvider({ children }: { children: ReactNode }) {
         }
       }
 
-      if (
-        !pushToTalkActive &&
-        timer - lastSentRequestTime > Math.ceil(60 / (difficulty * 1.5)) * 1000
-      ) {
+      if (!pushToTalkActive && timer - lastSentRequestTime > Math.ceil(60 / difficulty) * 1000) {
         for (const request of requests) {
           if (request.reminder && request.reminder.sendTime && timer >= request.reminder.sendTime) {
             setLastSentRequestTime(timer);

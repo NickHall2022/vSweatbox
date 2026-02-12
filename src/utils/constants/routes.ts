@@ -62,6 +62,7 @@ export const DEST_TO_NAME_MAP: Record<string, string> = {
   KJFK: 'JFK',
   KLGA: 'La Guardia',
   KMCO: 'Orlando',
+  KMDW: 'Chicago Midway',
   KMIA: 'Miami',
   KMSP: 'Minneapolis',
   KORD: "Chicago O'Hare",
