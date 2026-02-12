@@ -7,6 +7,7 @@ import { FeedbackLink } from './FeedbackLink';
 import { VoiceRecognitionSection } from './VoiceRecognitionSection';
 import { DEFAULT_PTT_KEY } from '../../utils/constants/speech';
 import { TextToSpeechSection } from './TextToSpeechSection';
+import AlertBanner from './AlertBanner';
 
 type Props = {
   setHelpOpen: Dispatch<SetStateAction<boolean>>;
@@ -42,6 +43,7 @@ function Help({ setHelpOpen }: Props) {
 
         <ul>
           <li>
+            Hold&nbsp;
             <code
               style={{
                 border: '1px solid #999',
@@ -49,7 +51,7 @@ function Help({ setHelpOpen }: Props) {
                 padding: '2px',
               }}
             >
-              <b>{`Hold ${pttKey}`}</b>
+              <b>{pttKey}</b>
             </code>
             &nbsp;to activate voice recognition and speak normally to send instructions
           </li>
@@ -160,6 +162,11 @@ function Help({ setHelpOpen }: Props) {
             you a request through the message window, just press your PTT key and respond to it out
             loud like you would a to real pilot. If you aren't using voice recognition, still
             practice saying the instructions, and then click the plane to tell it you are finished.
+            <AlertBanner
+              text="Please note: aircraft may not respond exactly as you would expect. This is a simpified
+                        training tool, not a perfectly accurate simulation."
+              severity="warning"
+            />
           </li>
           <li>
             <b>What if I'm not sure I'm doing it right?</b> As you come across things you aren't

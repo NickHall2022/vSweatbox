@@ -1,5 +1,6 @@
 import { CheckCircleOutline } from '@mui/icons-material';
 import { Grid } from '@mui/material';
+import AlertBanner from './AlertBanner';
 
 export function TextToSpeechSection() {
   function isMicrosoftEdge() {
@@ -34,25 +35,12 @@ export function TextToSpeechSection() {
         your browser tab is not muted. You can continue to use voice recognition independently of
         text-to-speech.
       </p>
-      {isMicrosoftEdge() ? (
-        <></>
-      ) : (
-        <div
-          style={{
-            backgroundColor: '#ff000036',
-            height: '50px',
-            borderRadius: '5px',
-            border: '1px solid red',
-            textAlign: 'center',
-            lineHeight: '46px',
-            marginTop: '10px',
-          }}
-        >
-          <b>
-            Your browser has limited text-to-speech support! MS Edge is recommended, though not
-            required.
-          </b>
-        </div>
+      {!isMicrosoftEdge() && (
+        <AlertBanner
+          text="Your browser has limited text-to-speech support! MS Edge is recommended, though not
+            required."
+          severity="error"
+        />
       )}
     </>
   );

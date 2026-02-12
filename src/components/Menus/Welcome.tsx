@@ -4,6 +4,7 @@ import { useDifficulty } from '../../hooks/useDifficulty';
 import { FeedbackLink } from './FeedbackLink';
 import { VoiceRecognitionSection } from './VoiceRecognitionSection';
 import { TextToSpeechSection } from './TextToSpeechSection';
+import AlertBanner from './AlertBanner';
 
 type Props = {
   setWelcomeOpen: Dispatch<SetStateAction<boolean>>;
@@ -31,6 +32,11 @@ function Welcome({ setWelcomeOpen }: Props) {
           simplified recreation of both CRC and vStrips in your browser, matching how you will use
           those systems as closely as possible.
         </p>
+        <AlertBanner
+          text="Please note: aircraft may not respond exactly as you would expect. This is a simpified
+            training tool, not a perfectly accurate simulation."
+          severity="warning"
+        />
         <hr></hr>
         <h3>Before you begin:</h3>
         <ol>

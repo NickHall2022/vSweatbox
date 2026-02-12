@@ -2,6 +2,7 @@ import { Grid } from '@mui/material';
 import { DEFAULT_PTT_KEY, SPEECH_AVAILABLE } from '../../utils/constants/speech';
 import { CheckCircleOutline, MicNone } from '@mui/icons-material';
 import { useEffect, useState, type Dispatch, type ReactElement, type SetStateAction } from 'react';
+import AlertBanner from './AlertBanner';
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = SpeechRecognition && new SpeechRecognition();
@@ -72,21 +73,11 @@ export function VoiceRecognitionSection({
     return (
       <>
         <h3>Voice Recognition:</h3>
-        <div
-          style={{
-            backgroundColor: '#ff000036',
-            height: '50px',
-            borderRadius: '5px',
-            border: '1px solid red',
-            textAlign: 'center',
-            lineHeight: '46px',
-            marginTop: '10px',
-          }}
-        >
-          <b>
-            Your browser does not support voice recognition! Using Microsoft Edge is recommended.
-          </b>
-        </div>
+
+        <AlertBanner
+          text="Your browser does not support voice recognition! Using Microsoft Edge is recommended."
+          severity="error"
+        />
       </>
     );
   }
