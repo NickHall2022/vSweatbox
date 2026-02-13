@@ -316,7 +316,7 @@ function createVFRFlightPlan(callsign: string): FlightPlan {
     squawk: buildRandomSquawk(),
     CID: generateRandomString(1000, 3),
     plannedTime: `P12${generateRandomString(60, 2)}`,
-    direction: getRandomDepartureDirection(),
+    direction: '',
   };
 }
 
@@ -374,6 +374,7 @@ function buildVFRDepartureRequest(
       ...aircraft.flightPlan,
       routeType: flightFollowing ? 'VFRFF' : 'VFR',
       requestedAltitude: altitude,
+      direction: `${flightFollowing ? DEST_TO_NAME_MAP[routing] + ' airport' : routing}`,
     },
   };
 }
