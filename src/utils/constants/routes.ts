@@ -5,6 +5,8 @@ export const DEST_TO_DIRECTION_MAP: Record<string, 'west' | 'east'> = {
   KCLT: 'west',
   KCVG: 'west',
   KDCA: 'west',
+  KDEN: 'west',
+  KDFW: 'west',
   KDTW: 'west',
   KEWR: 'west',
   KHPN: 'west',
@@ -12,6 +14,7 @@ export const DEST_TO_DIRECTION_MAP: Record<string, 'west' | 'east'> = {
   KJFK: 'west',
   KLGA: 'west',
   KMCO: 'west',
+  KMDW: 'west',
   KMIA: 'west',
   KMSP: 'west',
   KORD: 'west',
@@ -44,6 +47,12 @@ export const DEST_TO_DIRECTION_MAP: Record<string, 'west' | 'east'> = {
   KPVC: 'west',
   KPVD: 'west',
   KSWF: 'west',
+  //VFR
+  KEEN: 'west',
+  KBGR: 'east',
+  KBHB: 'east',
+  KLEW: 'east',
+  KRKD: 'east',
 };
 
 export const DIRECTIONS = ['northeast', 'north', 'northwest', 'west', 'southwest'];
@@ -55,6 +64,7 @@ export const DEST_TO_NAME_MAP: Record<string, string> = {
   KCLT: 'Charlotte',
   KCVG: 'Cincinatti',
   KDCA: 'Washington Reagan',
+  KDEN: 'Denver',
   KDFW: 'Dallas Fort Worth',
   KDTW: 'Detroit',
   KEWR: 'Newark',
@@ -96,4 +106,25 @@ export const DEST_TO_NAME_MAP: Record<string, string> = {
   KPVC: 'Provincetown',
   KPVD: 'Providence',
   KSWF: 'Newburgh',
+  //VFR
+  KEEN: 'Keene',
+  KBGR: 'Bangor',
+  KBHB: 'Bar Harbor',
+  KLEW: 'Lewiston',
+  KRKD: 'Rockland',
 };
+
+export const VFR_DESTINATIONS = [
+  'KALB',
+  'KBDL',
+  'KBED',
+  'KHVN',
+  'KEEN',
+  'KORH',
+  'KOWD',
+  'KPVD',
+  'KBGR',
+  'KBHB',
+  'KLEW',
+  'KRKD',
+];

@@ -18,7 +18,12 @@ import {
   SPAWNABLE_TEC_EAST_ALT,
   SPAWNABLE_TEC_WEST_ALT,
 } from './constants/altitudes';
-import { DEST_TO_NAME_MAP, DIRECTIONS } from './constants/routes';
+import {
+  DEST_TO_DIRECTION_MAP,
+  DEST_TO_NAME_MAP,
+  DIRECTIONS,
+  VFR_DESTINATIONS,
+} from './constants/routes';
 
 type UnspawnedVFRAircraft = Omit<Aircraft, keyof AircraftDefaultAttributes>;
 
@@ -331,14 +336,14 @@ function buildVFRDepartureRequest(
   aircraft: Omit<UnspawnedVFRAircraft, 'requests'>,
   flightFollowing: boolean
 ): UnspawnedVFRAircraft {
-  const direction = getRandomDepartureDirection();
-  const altitude = getRandomVFRAltitude(direction);
+  const routing = flightFollowing ? getRandomVFRDestination() : getRandomDepartureDirection();
+  const altitude = getRandomVFRAltitude(flightFollowing ? DEST_TO_DIRECTION_MAP[routing] : routing);
   return {
     ...aircraft,
     requests: [
       {
-        requestMessage: `Type ${aircraft.actualAircraftType} at the north apron with ${PHONETIC_ATIS}, request VFR departure${flightFollowing ? ' with flight following' : ''} to the ${direction} at ${altitude}`,
-        requestPhoneticMessage: `Portland ground, ${phoneticizeString(aircraft.callsign)} type ${aircraft.actualAircraftType} at the north apron with ${PHONETIC_ATIS}, request VFR departure${flightFollowing ? ' with flight following' : ''} to the ${direction} at ${altitude}`,
+        requestMessage: `Type ${aircraft.actualAircraftType} at the north apron with ${PHONETIC_ATIS}, request VFR departure${flightFollowing ? ' with flight following' : ''} to ${flightFollowing ? routing : 'the ' + routing} at ${altitude}`,
+        requestPhoneticMessage: `Portland ground, ${phoneticizeString(aircraft.callsign)} type ${aircraft.actualAircraftType} at the north apron with ${PHONETIC_ATIS}, request VFR departure${flightFollowing ? ' with flight following' : ''} to the ${flightFollowing ? DEST_TO_NAME_MAP[routing] + ' airport' : routing} at ${altitude} feet`,
         responseMessage: `Maintain VFR at or below 2500, departure 119.75, squawk ${aircraft.flightPlan.squawk}`,
         responsePhoneticMessage: `${phoneticizeString(aircraft.callsign)} maintain VFR at or below 2500, departure one one niner point seven five, squawk ${phoneticizeString(aircraft.flightPlan.squawk)}`,
         priority: 1,
@@ -577,6 +582,10 @@ function getRandomTecEquipment() {
 
 function getRandomDepartureDirection() {
   return getRandomArrayElement(DIRECTIONS);
+}
+
+function getRandomVFRDestination() {
+  return getRandomArrayElement(VFR_DESTINATIONS);
 }
 
 function handoffRequest(callsign: string): AircraftRequest {

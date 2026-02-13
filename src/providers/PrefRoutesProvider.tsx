@@ -2,6 +2,7 @@ import { type ReactNode } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import type { PrefRoute, PrefRouteDetails } from '../types/common';
 import { PrefRouteContext } from '../hooks/usePrefRoutes';
+import { DEST_TO_DIRECTION_MAP, DEST_TO_NAME_MAP } from '../utils/constants/routes';
 
 export function PrefRoutesProvider({
   loadSilently,
@@ -49,5 +50,18 @@ export function PrefRoutesProvider({
         tecRoutes: data.filter((route) => route.type === 'TEC'),
         highRoutes: data.filter((route) => route.type === 'H'),
       };
+
+  const unknownDestinations = value.tecRoutes
+    .concat(value.highRoutes)
+    .filter((route) => {
+      const destination = `K${route.destination}`;
+      return !(destination in DEST_TO_DIRECTION_MAP) || !(destination in DEST_TO_NAME_MAP);
+    })
+    .map((route) => route.destination);
+
+  if (unknownDestinations.length > 0) {
+    console.debug('Unknown destinations:', unknownDestinations);
+  }
+
   return <PrefRouteContext.Provider value={value}>{children}</PrefRouteContext.Provider>;
 }
