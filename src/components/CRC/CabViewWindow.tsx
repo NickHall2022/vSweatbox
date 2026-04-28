@@ -9,12 +9,18 @@ import { Taxiways } from '../debug/Taxiways';
 import { DataBlock } from './DataBlock';
 import { VoiceSwitch } from './VoiceSwitch';
 
+declare global {
+  interface Window {
+    debugMode?: () => void;
+  }
+}
+
 export function CabViewWindow() {
   const { aircrafts } = useAircraft();
   const [zoom, setZoom] = useState<number>(1);
   const [rotate, setRotate] = useState<number>(0);
+  const [visualizeTaxiways, setVisualizeTaxiways] = useState(false);
   const draggableRef = useRef<HTMLDivElement>(null);
-  const visualizeTaxiways = false;
   const handleEditorCallsignChangedRef = useRef<(callsign: string) => void>(undefined);
 
   useEffect(() => {
@@ -31,9 +37,11 @@ export function CabViewWindow() {
     };
 
     draggable.addEventListener('mousedown', preventLeftClickDrag);
+    window.debugMode = () => setVisualizeTaxiways((prev) => !prev);
 
     return () => {
       draggable.removeEventListener('mousedown', preventLeftClickDrag);
+      delete window.debugMode;
     };
   }, []);
 
