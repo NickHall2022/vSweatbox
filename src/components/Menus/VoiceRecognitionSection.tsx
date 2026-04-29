@@ -75,7 +75,7 @@ export function VoiceRecognitionSection({
         <h3>Voice Recognition:</h3>
 
         <AlertBanner
-          text="Your browser does not support voice recognition! Using Microsoft Edge is recommended."
+          text="Your browser does not support voice recognition! Using Google Chrome is recommended."
           severity="error"
         />
       </>
@@ -88,6 +88,7 @@ export function VoiceRecognitionSection({
   function isChrome() {
     return navigator.userAgent.includes('Chrome');
   }
+
   const browserMicrophoneSettings = isMicrosoftEdge()
     ? '(edge://settings/?search=microphone)'
     : isChrome()
@@ -142,15 +143,26 @@ export function VoiceRecognitionSection({
         <Grid>
           <h3>Voice Recognition:</h3>
         </Grid>
-        <Grid
-          alignItems="center"
-          display="flex"
-          style={{ color: 'rgba(0, 189, 0, 1)', paddingTop: '20px' }}
-        >
-          <span style={{ marginRight: '8px' }}>Your browser supports voice recognition</span>
-          <CheckCircleOutline style={{ fontSize: '25px' }} />
-        </Grid>
+        {!isMicrosoftEdge() && (
+          <Grid
+            alignItems="center"
+            display="flex"
+            style={{ color: 'rgba(0, 189, 0, 1)', paddingTop: '20px' }}
+          >
+            <span style={{ marginRight: '8px' }}>Your browser supports voice recognition</span>
+            <CheckCircleOutline style={{ fontSize: '25px' }} />
+          </Grid>
+        )}
       </Grid>
+      {isMicrosoftEdge() && (
+        <>
+          <br></br>
+          <AlertBanner
+            text="MS Edge is currently experiencing issues with voice recognition"
+            severity="error"
+          />
+        </>
+      )}
       <p>
         vSweatbox has a built-in voice recognition system to allow you to "talk" to the planes just
         as you would in the real sweatbox or live network. Here's a few quick tips:

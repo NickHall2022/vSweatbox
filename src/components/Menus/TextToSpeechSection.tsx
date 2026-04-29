@@ -35,13 +35,13 @@ export function TextToSpeechSection() {
         your browser tab is not muted. You can continue to use voice recognition independently of
         text-to-speech.
       </p>
-      {!isMicrosoftEdge() && (
+      {/* {!isMicrosoftEdge() && (
         <AlertBanner
           text="Your browser has limited text-to-speech support! MS Edge is recommended, though not
             required."
           severity="error"
         />
-      )}
+      )} */}
     </>
   );
 }
