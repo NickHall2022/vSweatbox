@@ -609,8 +609,27 @@ function getRandomVoice() {
       (voice) =>
         voice.lang === 'en-US' &&
         !voice.name.includes('Microsoft David') &&
-        !voice.name.includes('Microsoft Zira')
+        !voice.name.includes('Microsoft Davis') &&
+        !voice.name.includes('Microsoft Zira') &&
+        !voice.name.includes('Microsoft Jason') &&
+        !voice.name.includes('Microsoft Ashley') &&
+        !voice.name.includes('Microsoft Elizabeth') &&
+        !voice.name.includes('Microsoft Nancy') &&
+        !voice.name.includes('Microsoft Tony') &&
+        !voice.name.includes('Microsoft Kai') &&
+        !voice.name.includes('Microsoft Cora') &&
+        !voice.name.includes('Microsoft Luna') &&
+        !voice.name.includes('Microsoft Brandon') &&
+        !voice.name.includes('Microsoft Jacob') &&
+        !voice.name.includes('Microsoft Jane') &&
+        !voice.name.includes('Microsoft Monica') &&
+        !voice.name.includes('Microsoft Tyler') &&
+        !voice.name.includes('Microsoft Tiana') &&
+        !voice.name.includes('Microsoft Amber') &&
+        !voice.name.includes('Microsoft Jimmie') &&
+        !voice.name.includes('Multilingual')
     );
+
   const pitch = voices.length < 10 ? 0.8 + Math.random() * 0.4 : 1;
   return { voice: getRandomArrayElement(voices), pitch };
 }

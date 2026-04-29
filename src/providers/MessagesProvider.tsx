@@ -83,6 +83,7 @@ export function MessagesProvider({ children }: { children: ReactNode }) {
       utterance.voice = aircraft.voice;
       utterance.pitch = aircraft.pitch;
       utterance.rate = 1.1;
+      utterance.lang = 'en-US';
       SpeechSynthesis.speak(utterance);
     }
 
