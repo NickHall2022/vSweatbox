@@ -1,6 +1,6 @@
 import { CheckCircleOutline } from '@mui/icons-material';
 import { Grid } from '@mui/material';
-import AlertBanner from './AlertBanner';
+// import AlertBanner from './AlertBanner';
 
 export function TextToSpeechSection() {
   function isMicrosoftEdge() {

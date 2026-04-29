@@ -158,7 +158,7 @@ export function VoiceRecognitionSection({
         <>
           <br></br>
           <AlertBanner
-            text="MS Edge is currently experiencing issues with voice recognition"
+            text="MS Edge is currently experiencing issues with voice recognition, Chrome is recommended"
             severity="error"
           />
         </>
