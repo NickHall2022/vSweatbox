@@ -36,13 +36,11 @@ export function SpeechProvider({ children }: { children: ReactNode }) {
       };
     };
 
-    recognition.onerror = (error: any) => {
+    recognition.onerror = () => {
       recognition.stop();
-      console.log(error);
     };
 
     recognition.onstart = () => {
-      console.log('START');
       recognition.onend = () => {};
     };
 
