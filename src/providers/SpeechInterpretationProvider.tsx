@@ -99,12 +99,21 @@ export function SpeechInterpretatonProvider({ children }: { children: ReactNode 
         for (const alternative of keywords.alternatives) {
           if (keywordsMatchTranscript(alternative, transcript)) {
             if (alternative.aircraftResponse && alternative.aircraftResponse.length > 0) {
-              return sendMessage(
-                alternative.aircraftResponse,
-                callsign,
-                'radio',
-                `${phoneticizeString(callsign)} ${alternative.aircraftResponsePhonetic || alternative.aircraftResponse}`
-              );
+              if (alternative.completesRequest) {
+                return completeRequest(
+                  callsign,
+                  true,
+                  alternative.aircraftResponse,
+                  alternative.aircraftResponsePhonetic || alternative.aircraftResponse
+                );
+              } else {
+                return sendMessage(
+                  alternative.aircraftResponse,
+                  callsign,
+                  'radio',
+                  `${phoneticizeString(callsign)} ${alternative.aircraftResponsePhonetic || alternative.aircraftResponse}`
+                );
+              }
             }
             return;
           }
@@ -253,6 +262,7 @@ export function SpeechInterpretatonProvider({ children }: { children: ReactNode 
         return false;
       }
     }
+
     return true;
   }
 

@@ -168,7 +168,12 @@ export type SimulationDetails = {
   setPushToTalkActive: Dispatch<SetStateAction<boolean>>;
   setRequests: Updater<AircraftRequest[]>;
   timer: number;
-  completeRequest: (callsign: string, completedByVoice?: boolean) => void;
+  completeRequest: (
+    callsign: string,
+    completedByVoice?: boolean,
+    response?: string,
+    phoneticResponse?: string
+  ) => void;
   discardRequest: (callsign: string) => void;
 };
 
@@ -290,4 +295,5 @@ export type Keywords = {
   aircraftResponse?: string;
   aircraftResponsePhonetic?: string;
   requiredStatus?: FlightStatus;
+  completesRequest?: boolean;
 };

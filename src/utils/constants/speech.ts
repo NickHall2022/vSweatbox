@@ -109,6 +109,7 @@ export const REQUEST_KEYWORDS: Record<RequestType, Keywords> = {
         ],
         aircraftResponse: 'Monitor tower 120.9',
         aircraftResponsePhonetic: 'Monitor tower one two zero point niner',
+        completesRequest: true,
       },
     ],
   },

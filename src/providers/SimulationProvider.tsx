@@ -45,7 +45,12 @@ export function SimulationProvider({ children }: { children: ReactNode }) {
 
   const { sendMessage } = useMessages();
 
-  function completeRequest(callsign: string, completedByVoice: boolean = false) {
+  function completeRequest(
+    callsign: string,
+    completedByVoice: boolean = false,
+    response?: string,
+    phoneticResponse?: string
+  ) {
     const completedRequestIndex = requests.findIndex((request) => request.callsign === callsign);
     if (completedRequestIndex === -1) {
       return;
@@ -55,7 +60,7 @@ export function SimulationProvider({ children }: { children: ReactNode }) {
     if (completedRequest.atcMessage && !completedByVoice) {
       sendMessage(completedRequest.atcMessage, 'PWM_GND', 'self');
     }
-    if (completedRequest.responseMessage) {
+    if (response || completedRequest.responseMessage) {
       const aircraft = aircrafts.find(
         (aircraft) => aircraft.callsign === completedRequest.callsign
       );
@@ -69,10 +74,10 @@ export function SimulationProvider({ children }: { children: ReactNode }) {
         sendMessage(response, completedRequest.callsign, 'radio', phoneticResponse);
       } else {
         sendMessage(
-          completedRequest.responseMessage,
+          (response || completedRequest.responseMessage) as string,
           completedRequest.callsign,
           'radio',
-          completedRequest.responsePhoneticMessage
+          phoneticResponse || completedRequest.responsePhoneticMessage
         );
       }
       setLastSentRequestTime(timer);
