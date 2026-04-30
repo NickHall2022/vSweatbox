@@ -79,6 +79,8 @@ export function Strip({ stripData }: Props) {
     function handleClick(event: React.MouseEvent<HTMLDivElement>) {
       if (event.shiftKey) {
         handleOffset();
+      } else if (event.altKey) {
+        handleDelete();
       }
     }
 
