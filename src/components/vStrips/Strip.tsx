@@ -76,6 +76,12 @@ export function Strip({ stripData }: Props) {
       moveStripToBay(stripData, bayName);
     }
 
+    function handleClick(event: React.MouseEvent<HTMLDivElement>) {
+      if (event.shiftKey) {
+        handleOffset();
+      }
+    }
+
     const style: React.CSSProperties = {
       backgroundImage: stripData.type === 'blank' ? 'url(blankStrip.png)' : 'url(strip.png)',
       color: 'black',
@@ -91,7 +97,7 @@ export function Strip({ stripData }: Props) {
     };
 
     return (
-      <div style={style} draggable={true} onContextMenu={handleContextMenu}>
+      <div style={style} draggable={true} onContextMenu={handleContextMenu} onClick={handleClick}>
         {getStripComponent()}
 
         {stripData.bayName !== 'printer' && (
