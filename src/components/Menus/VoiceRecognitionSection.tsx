@@ -69,7 +69,15 @@ export function VoiceRecognitionSection({
     }
   }
 
-  if (!SPEECH_AVAILABLE) {
+  function isChrome() {
+    return navigator.userAgent.includes('Chrome');
+  }
+
+  function isMicrosoftEdge() {
+    return navigator.userAgent.includes('Edg/');
+  }
+
+  if (!SPEECH_AVAILABLE || isMicrosoftEdge() || !isChrome()) {
     return (
       <>
         <h3>Voice Recognition:</h3>
@@ -80,13 +88,6 @@ export function VoiceRecognitionSection({
         />
       </>
     );
-  }
-
-  function isMicrosoftEdge() {
-    return navigator.userAgent.includes('Edg/');
-  }
-  function isChrome() {
-    return navigator.userAgent.includes('Chrome');
   }
 
   const browserMicrophoneSettings = isMicrosoftEdge()
