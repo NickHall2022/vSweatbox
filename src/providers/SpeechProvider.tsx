@@ -181,6 +181,7 @@ export function SpeechProvider({ children }: { children: ReactNode }) {
       .replaceAll(' chop', ' check')
       .replaceAll(' squad', ' squawk')
       .replaceAll('squawks', 'squawk')
+      .replaceAll('clock', 'squawk')
       .replaceAll('s kwok', 'squawk')
       .replaceAll(' score', ' squawk')
       .replaceAll(' scorp', ' squawk')
@@ -288,6 +289,8 @@ export function SpeechProvider({ children }: { children: ReactNode }) {
     transcript = transcript.replace('#', 'nuble ');
     transcript = transcript.replace('nuble form', 'nuble 4');
     transcript = transcript.replace('nuble for', 'nuble 4');
+    transcript = transcript.replace('rubella', 'rbela');
+    transcript = transcript.replace('rebella', 'rbela');
     transcript = transcript.replace('haskell', 'hskel');
 
     Object.keys(PHONETIC_ALPHABET_REVERSE).forEach((letter) => {
